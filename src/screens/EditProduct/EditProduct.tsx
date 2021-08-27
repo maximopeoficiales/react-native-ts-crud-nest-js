@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 interface MyProps {}
 const defaultProps: MyProps = {};
-const EditProductScreen = (props: MyProps) => {
+const EditProduct = (props: MyProps) => {
   props = {...defaultProps, ...props};
   const {} = props;
   return (
@@ -14,4 +14,4 @@ const EditProductScreen = (props: MyProps) => {
 const styles = StyleSheet.create({
   
 });
-export default EditProductScreen;
+export default EditProduct;

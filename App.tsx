@@ -5,11 +5,11 @@ import {StyleSheet} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {RootStackParamList} from './src/screens/RootStackParams';
-import HomeScreen from './src/screens/HomeScreen/HomeScreen';
-import CreateProductScreen from './src/screens/CreateProductScreen/CreateProductScreen';
+import Home from './src/screens/Home/Home';
+import CreateProduct from './src/screens/CreateProduct/CreateProduct';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faDrumstickBite, faPlus} from '@fortawesome/free-solid-svg-icons';
-import EditProductScreen from './src/screens/EditProductScreen/EditProductScreen';
+import EditProduct from './src/screens/EditProduct/EditProduct';
 import {DefaultTheme} from 'react-native-paper';
 import {Theme} from 'react-native-paper/lib/typescript/types';
 import Bar from './src/components/ui/Bar/Bar';
@@ -41,7 +41,7 @@ const HomeTabs = () => {
       }}>
       <Tab.Screen
         name="HomeTab"
-        component={HomeScreen}
+        component={Home}
         options={() => ({
           headerLeft: () => <Bar />,
           title: 'Home',
@@ -50,7 +50,7 @@ const HomeTabs = () => {
       />
       <Tab.Screen
         name="CreateProductTab"
-        component={CreateProductScreen}
+        component={CreateProduct}
         options={{
           title: 'Create Product',
           tabBarIcon: () => <FontAwesomeIcon icon={faPlus} />,
@@ -69,7 +69,7 @@ export const App = () => {
           headerShown: false,
         }}>
         <Stack.Screen name="HomeStack" component={HomeTabs} />
-        <Stack.Screen name="EditProductStack" component={EditProductScreen} />
+        <Stack.Screen name="EditProductStack" component={EditProduct} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 interface MyProps {}
 const defaultProps: MyProps = {};
-const HomeScreen = (props: MyProps) => {
+const Home = (props: MyProps) => {
   props = {...defaultProps, ...props};
   const {} = props;
   return (
@@ -14,4 +14,4 @@ const HomeScreen = (props: MyProps) => {
 const styles = StyleSheet.create({
   
 });
-export default HomeScreen;
+export default Home;
