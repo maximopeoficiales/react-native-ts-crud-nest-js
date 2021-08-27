@@ -4,8 +4,9 @@ import { StyleSheet } from "react-native";
 export const globalStyle = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 20,
+        marginVertical: 20,
         marginHorizontal: "2.5%"
+
     }
     , title: {
         textAlign: "center",

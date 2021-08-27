@@ -1,9 +1,11 @@
 import React, {useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Headline, TextInput} from 'react-native-paper';
+import {Button, Headline, TextInput} from 'react-native-paper';
 import {Product} from '../../api/entitys/Product.dto';
 import {useForm} from '../../hooks/useForm';
 import {globalStyle} from '../../styles/global';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 interface MyProps {}
 const defaultProps: MyProps = {};
 const CreateProduct = (props: MyProps) => {
@@ -15,11 +17,10 @@ const CreateProduct = (props: MyProps) => {
 
   useEffect(() => {
     console.log(product);
-    
   }, [product]);
 
   const {description, name, price, salePrice} = product;
-
+  const handlerPress = () => {};
   return (
     <ScrollView style={globalStyle.container}>
       <Headline style={globalStyle.title}>Add Product</Headline>
@@ -66,6 +67,9 @@ const CreateProduct = (props: MyProps) => {
         label="Sale Price"
         keyboardType="numeric"
       />
+      <Button mode="contained" onPress={handlerPress}>
+        <Icon name="save" size={20} /> Save Product
+      </Button>
     </ScrollView>
   );
 };
