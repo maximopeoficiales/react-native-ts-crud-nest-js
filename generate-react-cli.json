@@ -14,6 +14,16 @@
       "withStory": false,
       "withLazy": false
     },
+    "ui": {
+      "customTemplates": {
+        "component": "src/templates/component/TemplateName.tsx"
+      },
+      "path": "src/components/ui",
+      "withStyle": false,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false
+    },
     "view": {
       "customTemplates": {
         "component": "src/templates/component/TemplateName.tsx"

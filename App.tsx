@@ -8,34 +8,51 @@ import {RootStackParamList} from './src/screens/RootStackParams';
 import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 import CreateProductScreen from './src/screens/CreateProductScreen/CreateProductScreen';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {
-  faCoffee,
-  faDrumstickBite,
-  faHome,
-  faPlus,
-} from '@fortawesome/free-solid-svg-icons';
+import {faDrumstickBite, faPlus} from '@fortawesome/free-solid-svg-icons';
 import EditProductScreen from './src/screens/EditProductScreen/EditProductScreen';
+import {DefaultTheme} from 'react-native-paper';
+import {Theme} from 'react-native-paper/lib/typescript/types';
+import Bar from './src/components/ui/Bar/Bar';
 
 // es muy buena practica hacer esto ayuda en el autocompletado
 const Tab = createBottomTabNavigator<RootStackParamList>();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
+const theme: Theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#1774F2',
+  },
+};
+
 const HomeTabs = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: theme.colors.primary,
+        },
+        headerTitleAlign: 'center',
+        headerTintColor: theme.colors.surface,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
       <Tab.Screen
         name="HomeTab"
         component={HomeScreen}
-        options={{
-          title:"Home",
+        options={() => ({
+          headerLeft: () => <Bar />,
+          title: 'Home',
           tabBarIcon: () => <FontAwesomeIcon icon={faDrumstickBite} />,
-        }}
+        })}
       />
       <Tab.Screen
         name="CreateProductTab"
         component={CreateProductScreen}
         options={{
-          title:"Create Product",
+          title: 'Create Product',
           tabBarIcon: () => <FontAwesomeIcon icon={faPlus} />,
         }}
       />
