@@ -1,12 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Button} from 'react-native-paper';
-import {
-  authScreenProp,
-  RootStackParamList,
-} from '../../../screens/RootStackParams';
+import {authScreenProp} from '../../../screens/RootStackParams';
 
 interface MyProps {}
 

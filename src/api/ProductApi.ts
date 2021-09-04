@@ -8,14 +8,16 @@ class ProductApi {
         this.urlProducts = `${config.API_URL}/products`;
     }
 
-    async create(product: Product) {
-        try {
-            let response = await axios.post(this.urlProducts, product);
-            return (response.data) as UpdateProductDto;
-        } catch (error) {
-            return null;
-        }
+    async getAll() {
+        let response = await axios.get(this.urlProducts);
+        return (response.data) as UpdateProductDto[];
     }
+    async create(product: Product) {
+        let response = await axios.post(this.urlProducts, product);
+        return (response.data) as UpdateProductDto;
+    }
+
+
 }
 
 export const productApi = new ProductApi();

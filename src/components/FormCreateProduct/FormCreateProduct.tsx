@@ -1,22 +1,24 @@
-import React, {useEffect} from 'react';
-import {useNavigation} from '@react-navigation/core';
+import React from 'react';
 import {Formik} from 'formik';
-import {Alert, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Button, HelperText, TextInput} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as Yup from 'yup';
-import {productApi} from '../../api';
-import {authScreenProp} from '../../screens/RootStackParams';
+import {productApi} from '../../api/ProductApi';
 import {Product} from '../../api/entitys/Product';
 import {showErrors} from '../../utils';
 import Toast from 'react-native-toast-message';
+import {useNavigation} from '@react-navigation/core';
+import {authScreenProp} from '../../screens/RootStackParams';
 
 interface MyProps {}
 const defaultProps: MyProps = {};
 const FormCreateProduct = (props: MyProps) => {
   props = {...defaultProps, ...props};
   const {} = props;
+
   const navigation = useNavigation<authScreenProp>();
+
   const redirectHomeScreen = () => {
     navigation.navigate('HomeTab');
   };
@@ -41,20 +43,22 @@ const FormCreateProduct = (props: MyProps) => {
         initialValues={initialProduct}
         onSubmit={async (values, {resetForm}) => {
           // reseteo el formulario despues de crear el registro
-          let product = await productApi.create(values);
-          if (product) {
-            // redireccionar
-            // limpiar el formulario
-            resetForm({
-              values: initialProduct,
-            });
-            Toast.show({
-              type: 'success',
-              text1: 'Completed',
-              text2: 'Product creado correctamente 👋',
-            });
-            redirectHomeScreen();
-          } else {
+          try {
+            let product = await productApi.create(values);
+            if (product) {
+              // limpiar el formulario
+              resetForm({
+                values: initialProduct,
+              });
+              Toast.show({
+                type: 'success',
+                text1: 'Completed',
+                text2: 'Product creado correctamente 👋',
+              });
+              // redireccionar
+              redirectHomeScreen();
+            }
+          } catch (error) {
             Toast.show({
               type: 'error',
               text1: 'Error en el servidor',
