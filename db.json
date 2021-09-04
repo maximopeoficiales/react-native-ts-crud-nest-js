@@ -1,0 +1,53 @@
+{
+  "products": [
+    {
+      "description": "Fygg",
+      "name": "Ughv",
+      "price": 1,
+      "salePrice": 1,
+      "id": 1
+    },
+    {
+      "description": "Fygg",
+      "name": "Ughv",
+      "price": 1,
+      "salePrice": 1,
+      "id": 2
+    },
+    {
+      "description": "Fygg",
+      "name": "Nuevo nom",
+      "price": 1,
+      "salePrice": 1,
+      "id": 3
+    },
+    {
+      "description": "Kvvkjj",
+      "name": "Gkjcv",
+      "price": 1,
+      "salePrice": 1,
+      "id": 4
+    },
+    {
+      "description": "Nnjjj",
+      "name": "Jgjbbb",
+      "price": 1,
+      "salePrice": 1,
+      "id": 5
+    },
+    {
+      "description": "Kkkkl",
+      "name": "Hgkbbj",
+      "price": 1,
+      "salePrice": 1,
+      "id": 6
+    },
+    {
+      "description": "Ghjjjjjj",
+      "name": "Hkhc",
+      "price": 1,
+      "salePrice": 1,
+      "id": 7
+    }
+  ]
+}

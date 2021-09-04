@@ -3,7 +3,10 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Button} from 'react-native-paper';
-import {RootStackParamList} from '../../../screens/RootStackParams';
+import {
+  authScreenProp,
+  RootStackParamList,
+} from '../../../screens/RootStackParams';
 
 interface MyProps {}
 
@@ -12,7 +15,6 @@ const Bar = (props: MyProps) => {
   props = {...defaultProps, ...props};
   const {} = props;
 
-  type authScreenProp = NativeStackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<authScreenProp>();
 
   const handlerPress = () => {

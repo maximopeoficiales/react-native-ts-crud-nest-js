@@ -1,4 +1,5 @@
 import { RouteProp } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export type RootStackParamList = {
     HomeStack: any;
@@ -11,3 +12,5 @@ export type RootRouteProps<RouteName extends keyof RootStackParamList> = RoutePr
     RootStackParamList,
     RouteName
 >;
+
+export type authScreenProp = NativeStackNavigationProp<RootStackParamList>;

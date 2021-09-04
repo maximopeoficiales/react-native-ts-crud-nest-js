@@ -15,6 +15,7 @@ import {DefaultTheme} from 'react-native-paper';
 import {Theme} from 'react-native-paper/lib/typescript/types';
 import Bar from './src/components/ui/Bar/Bar';
 import {name as appName} from './app.json';
+import Toast from 'react-native-toast-message';
 
 // es muy buena practica hacer esto ayuda en el autocompletado
 const Tab = createBottomTabNavigator<RootStackParamList>();
@@ -65,18 +66,21 @@ export const App = () => {
   return (
     // Oculto el header principal
     // PaperProvider Segun la documentacion oficial
-    <PaperProvider theme={theme}>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="HomeStack"
-          screenOptions={{
-            headerShown: false,
-          }}>
-          <Stack.Screen name="HomeStack" component={HomeTabs} />
-          <Stack.Screen name="EditProductStack" component={EditProduct} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </PaperProvider>
+    <>
+      <PaperProvider theme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="HomeStack"
+            screenOptions={{
+              headerShown: false,
+            }}>
+            <Stack.Screen name="HomeStack" component={HomeTabs} />
+            <Stack.Screen name="EditProductStack" component={EditProduct} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+      <Toast ref={ref => Toast.setRef(ref)} />
+    </>
   );
 };
 
