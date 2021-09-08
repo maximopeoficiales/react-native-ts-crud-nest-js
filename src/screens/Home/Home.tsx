@@ -55,6 +55,9 @@ const Home = (props: MyProps) => {
         keyExtractor={product => product.id?.toString() ?? 'key'}
         renderItem={({item}) => (
           <List.Item
+            onPress={() =>
+              navigation.navigate('EditProductStack', {product: item})
+            }
             title={item.name}
             description={`${item.description} - ${item.price}`}
             left={props => (

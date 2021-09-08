@@ -4,7 +4,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {AppRegistry, StyleSheet} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {
+  BottomTabNavigationOptions,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import {RootStackParamList} from './src/screens/RootStackParams';
 import Home from './src/screens/Home/Home';
 import CreateProduct from './src/screens/CreateProduct/CreateProduct';
@@ -13,7 +16,7 @@ import {faDrumstickBite, faPlus} from '@fortawesome/free-solid-svg-icons';
 import EditProduct from './src/screens/EditProduct/EditProduct';
 import {DefaultTheme} from 'react-native-paper';
 import {Theme} from 'react-native-paper/lib/typescript/types';
-import Bar from './src/components/ui/Bar/Bar';
+// import Bar from './src/components/ui/Bar/Bar';
 import {name as appName} from './app.json';
 import Toast from 'react-native-toast-message';
 
@@ -28,25 +31,25 @@ const theme: Theme = {
     primary: '#1774F2',
   },
 };
+const optionsTabNavigator: BottomTabNavigationOptions = {
+  headerStyle: {
+    backgroundColor: theme.colors.primary,
+  },
+  headerTitleAlign: 'center',
+  headerTintColor: theme.colors.surface,
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },
+};
 
-const HomeTabs = () => {
+const BottomTabs = () => {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: theme.colors.primary,
-        },
-        headerTitleAlign: 'center',
-        headerTintColor: theme.colors.surface,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}>
+    <Tab.Navigator screenOptions={optionsTabNavigator}>
       <Tab.Screen
         name="HomeTab"
         component={Home}
         options={() => ({
-          headerLeft: () => <Bar />,
+          // headerLeft: () => <Bar />,
           title: 'Home',
           tabBarIcon: () => <FontAwesomeIcon icon={faDrumstickBite} />,
         })}
@@ -74,8 +77,17 @@ export const App = () => {
             screenOptions={{
               headerShown: false,
             }}>
-            <Stack.Screen name="HomeStack" component={HomeTabs} />
-            <Stack.Screen name="EditProductStack" component={EditProduct} />
+            <Stack.Screen name="HomeStack" component={BottomTabs} />
+            {/* de esta manera hago que el bottom navigation pueda tener un tab sin mostrarlo */}
+            <Stack.Screen
+              name="EditProductStack"
+              component={EditProduct}
+              options={{
+                ...(optionsTabNavigator as any),
+                title: 'Edit Product',
+                headerShown: true,
+              }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
