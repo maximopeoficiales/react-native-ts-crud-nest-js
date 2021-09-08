@@ -1,18 +1,11 @@
 {
   "products": [
     {
-      "description": "Alguna descripción",
-      "name": "Pollo frito",
-      "price": "19.3",
-      "salePrice": "20",
+      "description": "Blbalab",
+      "name": "Nuevo producto",
+      "price": "13",
+      "salePrice": "18",
       "id": 1
-    },
-    {
-      "description": "Kknkn",
-      "name": "Jjbnk",
-      "price": 1,
-      "salePrice": 1,
-      "id": 2
     }
   ]
 }

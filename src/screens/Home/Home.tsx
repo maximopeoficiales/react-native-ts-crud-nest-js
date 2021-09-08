@@ -38,9 +38,6 @@ const Home = (props: MyProps) => {
         }
       })();
     }
-    return () => {
-      console.log('Me fui de la pantalla');
-    };
   }, [chargingProducts]);
 
   return (
@@ -56,10 +53,13 @@ const Home = (props: MyProps) => {
         renderItem={({item}) => (
           <List.Item
             onPress={() =>
-              navigation.navigate('EditProductStack', {product: item})
+              navigation.navigate('EditProductStack', {
+                product: item,
+                setChargingProducts,
+              })
             }
             title={item.name}
-            description={`${item.description} - ${item.price}`}
+            description={item.description}
             left={props => (
               <List.Icon
                 {...props}

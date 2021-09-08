@@ -1,26 +1,41 @@
-import {useRoute} from '@react-navigation/core';
+import {useNavigation, useRoute} from '@react-navigation/core';
 import React from 'react';
 import {Alert, StyleSheet, Text, View} from 'react-native';
 import {Button, Headline, Subheading} from 'react-native-paper';
 import Toast from 'react-native-toast-message';
+import {productApi} from '../../api/ProductApi';
 import {globalStyle} from '../../styles/global';
-import {RootRouteProps} from '../RootStackParams';
+import {authScreenProp, RootRouteProps} from '../RootStackParams';
 interface MyProps {}
 const defaultProps: MyProps = {};
 const EditProduct = (props: MyProps) => {
   props = {...defaultProps, ...props};
   const {} = props;
 
+  const navigation = useNavigation<authScreenProp>();
+
   const {
-    params: {product},
+    params: {product, setChargingProducts},
   } = useRoute<RootRouteProps<'EditProductStack'>>();
-  const {description, price, salePrice, name} = product;
-  const deleteProduct = () => {
-    Toast.show({
-      type: 'success',
-      text1: 'Deleted Product',
-      text2: `You have removed the Product: ${name}`,
-    });
+
+  const {description, price, salePrice, name, id} = product;
+  const deleteProduct = async () => {
+    const response = await productApi.delete(id ?? 0);
+    if (response) {
+      navigation.navigate('HomeTab');
+      setChargingProducts(true);
+      Toast.show({
+        type: 'success',
+        text1: 'Deleted Product',
+        text2: `You have removed the Product: ${name}`,
+      });
+    } else {
+      Toast.show({
+        type: 'danger',
+        text1: 'Error en el servidor',
+        text2: `Producto no eliminado`,
+      });
+    }
   };
   const showConfirm = () => {
     Alert.alert(

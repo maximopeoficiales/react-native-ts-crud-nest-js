@@ -1,11 +1,11 @@
 import { RouteProp } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { Product } from '../api/entitys/Product';
+import { UpdateProductDto } from "../api/dto/update-product.dto";
 export type RootStackParamList = {
     HomeStack: any;
     HomeTab: any;
     CreateProductTab: any;
-    EditProductStack: { product: Product };
+    EditProductStack: { product: UpdateProductDto, setChargingProducts: any };
 };
 
 export type RootRouteProps<RouteName extends keyof RootStackParamList> = RouteProp<

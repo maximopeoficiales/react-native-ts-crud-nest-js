@@ -17,6 +17,12 @@ class ProductApi {
         return (response.data) as UpdateProductDto;
     }
 
+    async delete(idProduct: number) {
+        let response = await axios.delete(`${this.urlProducts}/${idProduct}`);
+        return (response.status == 200)
+
+    }
+
 
 }
 
