@@ -1,6 +1,6 @@
 import {faHamburger} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {useRoute} from '@react-navigation/core';
+import {useNavigation, useRoute} from '@react-navigation/core';
 import React, {useEffect, useState} from 'react';
 import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {FAB, Headline, List} from 'react-native-paper';
@@ -8,33 +8,40 @@ import Toast from 'react-native-toast-message';
 import {UpdateProductDto} from '../../api/dto/update-product.dto';
 import {productApi} from '../../api/ProductApi';
 import {globalStyle} from '../../styles/global';
-import {RootRouteProps} from '../RootStackParams';
+import {authScreenProp, RootRouteProps} from '../RootStackParams';
 interface MyProps {}
 const defaultProps: MyProps = {};
 const Home = (props: MyProps) => {
   props = {...defaultProps, ...props};
   const {} = props;
   const [products, setProducts] = useState<UpdateProductDto[]>([]);
+  const [chargingProducts, setChargingProducts] = useState(true);
+  const navigation = useNavigation<authScreenProp>();
+
+  const redirectProductTab = () => {
+    navigation.navigate('CreateProductTab', {setChargingProducts});
+  };
 
   useEffect(() => {
-    (async () => {
-      try {
-        let data = await productApi.getAll();
-        setProducts(data);
-        console.log('me ejecute');
-      } catch (error) {
-        Toast.show({
-          type: 'error',
-          text1: 'Error en el servidor',
-          text2: 'Ocurrio un error en la creacion del producto',
-        });
-      }
-    })();
-    Toast.show({
-      type: 'info',
-      text1: 'Se cargo el componente',
-    });
-  }, []);
+    if (chargingProducts) {
+      (async () => {
+        try {
+          let data = await productApi.getAll();
+          setChargingProducts(false);
+          setProducts(data);
+        } catch (error) {
+          Toast.show({
+            type: 'error',
+            text1: 'Error en el servidor',
+            text2: 'Ocurrio un error en la creacion del producto',
+          });
+        }
+      })();
+    }
+    return () => {
+      console.log('Me fui de la pantalla');
+    };
+  }, [chargingProducts]);
 
   return (
     <View style={globalStyle.container}>
@@ -59,7 +66,7 @@ const Home = (props: MyProps) => {
           />
         )}
       />
-      <FAB icon="plus" style={styles.fab} />
+      <FAB icon="plus" style={styles.fab} onPress={redirectProductTab} />
     </View>
   );
 };

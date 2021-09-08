@@ -1,137 +1,18 @@
 {
   "products": [
     {
-      "description": "Fygg",
-      "name": "Ughv",
-      "price": 1,
-      "salePrice": 1,
+      "description": "Alguna descripción",
+      "name": "Pollo frito",
+      "price": "19.3",
+      "salePrice": "20",
       "id": 1
     },
     {
-      "description": "Fygg",
-      "name": "Ughv",
+      "description": "Kknkn",
+      "name": "Jjbnk",
       "price": 1,
       "salePrice": 1,
       "id": 2
-    },
-    {
-      "description": "Fygg",
-      "name": "Nuevo nom",
-      "price": 1,
-      "salePrice": 1,
-      "id": 3
-    },
-    {
-      "description": "Kvvkjj",
-      "name": "Gkjcv",
-      "price": 1,
-      "salePrice": 1,
-      "id": 4
-    },
-    {
-      "description": "Nnjjj",
-      "name": "Jgjbbb",
-      "price": 1,
-      "salePrice": 1,
-      "id": 5
-    },
-    {
-      "description": "Kkkkl",
-      "name": "Hgkbbj",
-      "price": 1,
-      "salePrice": 1,
-      "id": 6
-    },
-    {
-      "description": "Ghjjjjjj",
-      "name": "Hkhc",
-      "price": 1,
-      "salePrice": 1,
-      "id": 7
-    },
-    {
-      "description": "Nuevo producto",
-      "name": "Hola bro",
-      "price": "1967",
-      "salePrice": "6494",
-      "id": 8
-    },
-    {
-      "description": "Hijjj",
-      "name": "Ahhh no s va a vet",
-      "price": 1,
-      "salePrice": 1,
-      "id": 9
-    },
-    {
-      "description": "Hhjhh",
-      "name": "Unjh cargaaa",
-      "price": "166",
-      "salePrice": 1,
-      "id": 10
-    },
-    {
-      "description": "Bhhhyy",
-      "name": "Hhhhgv",
-      "price": 1,
-      "salePrice": 1,
-      "id": 11
-    },
-    {
-      "description": "Vvhhhh",
-      "name": "Fcghvvv",
-      "price": 1,
-      "salePrice": 1,
-      "id": 12
-    },
-    {
-      "description": "Bbjjjjj",
-      "name": "Nuevoooo",
-      "price": 1,
-      "salePrice": 1,
-      "id": 13
-    },
-    {
-      "description": "Bbjnbb",
-      "name": "Jj nuevo",
-      "price": 1,
-      "salePrice": 1,
-      "id": 14
-    },
-    {
-      "description": " Jjjjj",
-      "name": "Nuevo producto",
-      "price": "16",
-      "salePrice": "100",
-      "id": 15
-    },
-    {
-      "description": "Jjjjjj",
-      "name": "Hola ",
-      "price": 1,
-      "salePrice": 1,
-      "id": 16
-    },
-    {
-      "description": "Nnnjb",
-      "name": "Jjjj",
-      "price": 1,
-      "salePrice": 1,
-      "id": 17
-    },
-    {
-      "description": "Bbbb",
-      "name": "Iuuuu",
-      "price": 1,
-      "salePrice": 1,
-      "id": 18
-    },
-    {
-      "description": "Ccgvvv",
-      "name": "Rtghhh",
-      "price": 1,
-      "salePrice": 1,
-      "id": 19
     }
   ]
 }

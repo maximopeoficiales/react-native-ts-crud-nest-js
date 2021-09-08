@@ -8,15 +8,16 @@ import {productApi} from '../../api/ProductApi';
 import {Product} from '../../api/entitys/Product';
 import {showErrors} from '../../utils';
 import Toast from 'react-native-toast-message';
-import {useNavigation} from '@react-navigation/core';
-import {authScreenProp} from '../../screens/RootStackParams';
+import {useNavigation, useRoute} from '@react-navigation/core';
+import {authScreenProp, RootRouteProps} from '../../screens/RootStackParams';
 
 interface MyProps {}
 const defaultProps: MyProps = {};
 const FormCreateProduct = (props: MyProps) => {
   props = {...defaultProps, ...props};
   const {} = props;
-
+  const {params} = useRoute<RootRouteProps<'CreateProductTab'>>();
+  
   const navigation = useNavigation<authScreenProp>();
 
   const redirectHomeScreen = () => {
@@ -56,6 +57,7 @@ const FormCreateProduct = (props: MyProps) => {
                 text2: 'Product creado correctamente 👋',
               });
               // redireccionar
+              params?.setChargingProducts(true);
               redirectHomeScreen();
             }
           } catch (error) {
